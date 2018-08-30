@@ -35,7 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="cards" translatesAutoresizingMaskIntoConstraints="NO" id="iJa-yQ-9zF">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="acceptanceMark" translatesAutoresizingMaskIntoConstraints="NO" id="iJa-yQ-9zF">
                                 <rect key="frame" x="67" y="416" width="240" height="108"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="108" id="rsV-ZP-CEJ"/>
@@ -53,15 +53,36 @@
                                     <constraint firstAttribute="height" constant="60" id="bkn-F3-2np"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay with Cards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tmI-XC-zKj">
+                                <rect key="frame" x="115" y="404" width="230" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment will open in new page" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqx-gO-ZjB">
+                                <rect key="frame" x="64" y="475" width="230" height="77"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="77" id="tcK-9x-AFg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="iJa-yQ-9zF" secondAttribute="bottom" constant="143" id="5u9-Qn-9hf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Uqx-gO-ZjB" secondAttribute="bottom" constant="115" id="8HU-4d-wfc"/>
                             <constraint firstItem="UqY-hn-2pC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="8kD-AA-oMB"/>
+                            <constraint firstItem="tmI-XC-zKj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="115" id="9CV-St-zWi"/>
                             <constraint firstItem="iJa-yQ-9zF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="ENh-q5-8ah"/>
                             <constraint firstItem="UqY-hn-2pC" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="196:667" id="OEL-HP-gCx"/>
+                            <constraint firstItem="Uqx-gO-ZjB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="64" id="Qsb-Q0-hEH"/>
                             <constraint firstItem="iJa-yQ-9zF" firstAttribute="centerX" secondItem="h22-lQ-OlJ" secondAttribute="centerX" id="Wex-YW-ZW7"/>
+                            <constraint firstItem="Uqx-gO-ZjB" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="iJa-yQ-9zF" secondAttribute="trailing" constant="-13" id="dPX-tV-v9Q"/>
+                            <constraint firstItem="tmI-XC-zKj" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="h22-lQ-OlJ" secondAttribute="trailing" id="fQs-Ju-o9N"/>
                             <constraint firstItem="UqY-hn-2pC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="o23-Th-CVj"/>
+                            <constraint firstItem="Uqx-gO-ZjB" firstAttribute="top" secondItem="tmI-XC-zKj" secondAttribute="bottom" constant="47" id="ocB-2A-hfr"/>
                             <constraint firstItem="UqY-hn-2pC" firstAttribute="centerX" secondItem="h22-lQ-OlJ" secondAttribute="centerX" id="pAo-dP-8a9"/>
                             <constraint firstItem="h22-lQ-OlJ" firstAttribute="trailing" secondItem="UqY-hn-2pC" secondAttribute="trailing" constant="60" id="pfs-iX-Vva"/>
                             <constraint firstItem="h22-lQ-OlJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="229" id="t3h-KO-FEA"/>
@@ -77,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-689" y="200"/>
+            <point key="canvasLocation" x="-690.39999999999998" y="199.25037481259372"/>
         </scene>
         <!--Wk Web View Controller-->
         <scene sceneID="1le-aj-DvT">
@@ -113,6 +134,6 @@
     </scenes>
     <resources>
         <image name="PwPP" width="526" height="102"/>
-        <image name="cards" width="516" height="172"/>
+        <image name="acceptanceMark" width="319" height="110"/>
     </resources>
 </document>
