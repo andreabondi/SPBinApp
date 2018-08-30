@@ -9,6 +9,7 @@
 import UIKit
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
@@ -19,6 +20,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    // Handle return from SFSafariViewController
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if(url.scheme == "uk.co.paypal.spbinapp"){
+            if(url.host == "success"){
+                print("returning with url: " + url.absoluteString)
+                let token = getQueryStringParameter(url: url.absoluteString, param: "token")
+                let payerID = getQueryStringParameter(url: url.absoluteString, param: "payerID")
+                let nc = NotificationCenter.default
+                nc.post(name: .complete, object: nil, userInfo: ["token": token!, "payerID": payerID!])
+            }
+            else if(url.host == "cancel"){
+                print("returning with url: " + url.absoluteString)
+                let token = getQueryStringParameter(url: url.absoluteString, param: "token")
+                let nc = NotificationCenter.default
+                nc.post(name: .cancel, object: nil, userInfo: ["token": token!])
+            }
+            return true;
+        }
+        return false;
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -44,3 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension Notification.Name {
+    static let complete = Notification.Name("complete")
+    static let cancel = Notification.Name("cancel")
+}

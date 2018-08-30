@@ -7,14 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090461C73F9F75874028C41D /* Pods_SPBinApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EC064F67FCA36B76C3B340F /* Pods_SPBinApp.framework */; };
+		BE438E422136C52300C44611 /* SPBWkWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE438E412136C52300C44611 /* SPBWkWebViewController.swift */; };
 		BE4D9F80213539620031685F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4D9F7F213539620031685F /* AppDelegate.swift */; };
 		BE4D9F82213539620031685F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4D9F81213539620031685F /* ViewController.swift */; };
 		BE4D9F85213539620031685F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE4D9F83213539620031685F /* Main.storyboard */; };
 		BE4D9F87213539630031685F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE4D9F86213539630031685F /* Assets.xcassets */; };
 		BE4D9F8A213539630031685F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE4D9F88213539630031685F /* LaunchScreen.storyboard */; };
+		BEB750B021355E33002DF51A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEB750AF21355E33002DF51A /* Images.xcassets */; };
+		BEC73F4C2135FD5A00530894 /* libPPRiskComponent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEC73F4B2135FD5A00530894 /* libPPRiskComponent.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D861610CAEC8880B554B7DE /* Pods-SPBinApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPBinApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SPBinApp/Pods-SPBinApp.release.xcconfig"; sourceTree = "<group>"; };
+		618C1757598A0DA4DD18DA7B /* Pods-SPBinApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPBinApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SPBinApp/Pods-SPBinApp.debug.xcconfig"; sourceTree = "<group>"; };
+		6EC064F67FCA36B76C3B340F /* Pods_SPBinApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SPBinApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE438E412136C52300C44611 /* SPBWkWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPBWkWebViewController.swift; sourceTree = "<group>"; };
 		BE4D9F7C213539620031685F /* SPBinApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPBinApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE4D9F7F213539620031685F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE4D9F81213539620031685F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +30,10 @@
 		BE4D9F86213539630031685F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE4D9F89213539630031685F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE4D9F8B213539630031685F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE4D9F912135494A0031685F /* PPRiskComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPRiskComponent.h; sourceTree = "<group>"; };
+		BE4D9F92213549700031685F /* PPRiskBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPRiskBridge.h; sourceTree = "<group>"; };
+		BEB750AF21355E33002DF51A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BEC73F4B2135FD5A00530894 /* libPPRiskComponent.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPPRiskComponent.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +41,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEC73F4C2135FD5A00530894 /* libPPRiskComponent.a in Frameworks */,
+				090461C73F9F75874028C41D /* Pods_SPBinApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A0E9228C662AC340974AFF94 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				618C1757598A0DA4DD18DA7B /* Pods-SPBinApp.debug.xcconfig */,
+				5D861610CAEC8880B554B7DE /* Pods-SPBinApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BE4D9F73213539620031685F = {
 			isa = PBXGroup;
 			children = (
 				BE4D9F7E213539620031685F /* SPBinApp */,
 				BE4D9F7D213539620031685F /* Products */,
+				A0E9228C662AC340974AFF94 /* Pods */,
+				DE0775F348E5A12B567ADF91 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +79,27 @@
 		BE4D9F7E213539620031685F /* SPBinApp */ = {
 			isa = PBXGroup;
 			children = (
+				BE4D9F912135494A0031685F /* PPRiskComponent.h */,
+				BE4D9F92213549700031685F /* PPRiskBridge.h */,
 				BE4D9F7F213539620031685F /* AppDelegate.swift */,
 				BE4D9F81213539620031685F /* ViewController.swift */,
 				BE4D9F83213539620031685F /* Main.storyboard */,
 				BE4D9F86213539630031685F /* Assets.xcassets */,
 				BE4D9F88213539630031685F /* LaunchScreen.storyboard */,
 				BE4D9F8B213539630031685F /* Info.plist */,
+				BEB750AF21355E33002DF51A /* Images.xcassets */,
+				BE438E412136C52300C44611 /* SPBWkWebViewController.swift */,
 			);
 			path = SPBinApp;
+			sourceTree = "<group>";
+		};
+		DE0775F348E5A12B567ADF91 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BEC73F4B2135FD5A00530894 /* libPPRiskComponent.a */,
+				6EC064F67FCA36B76C3B340F /* Pods_SPBinApp.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +109,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BE4D9F8E213539630031685F /* Build configuration list for PBXNativeTarget "SPBinApp" */;
 			buildPhases = (
+				74BC6036AC7884025D7A4CAD /* [CP] Check Pods Manifest.lock */,
 				BE4D9F78213539620031685F /* Sources */,
 				BE4D9F79213539620031685F /* Frameworks */,
 				BE4D9F7A213539620031685F /* Resources */,
+				761232C398758206860A7040 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,12 +163,56 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE4D9F8A213539630031685F /* LaunchScreen.storyboard in Resources */,
+				BEB750B021355E33002DF51A /* Images.xcassets in Resources */,
 				BE4D9F87213539630031685F /* Assets.xcassets in Resources */,
 				BE4D9F85213539620031685F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		74BC6036AC7884025D7A4CAD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SPBinApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		761232C398758206860A7040 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SPBinApp/Pods-SPBinApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SPBinApp/Pods-SPBinApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BE4D9F78213539620031685F /* Sources */ = {
@@ -137,6 +221,7 @@
 			files = (
 				BE4D9F82213539620031685F /* ViewController.swift in Sources */,
 				BE4D9F80213539620031685F /* AppDelegate.swift in Sources */,
+				BE438E422136C52300C44611 /* SPBWkWebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,7 +298,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -267,7 +352,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -278,6 +363,7 @@
 		};
 		BE4D9F8F213539630031685F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 618C1757598A0DA4DD18DA7B /* Pods-SPBinApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,8 +373,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.paypal.SPBinApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/SPBinApp/PPRiskBridge.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -296,6 +387,7 @@
 		};
 		BE4D9F90213539630031685F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D861610CAEC8880B554B7DE /* Pods-SPBinApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -305,8 +397,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.paypal.SPBinApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/SPBinApp/PPRiskBridge.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +15,57 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SPBinApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="cards" translatesAutoresizingMaskIntoConstraints="NO" id="iJa-yQ-9zF">
+                                <rect key="frame" x="67" y="397" width="240" height="127"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="127" id="8aQ-sB-LfB"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checkout Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UqY-hn-2pC">
+                                <rect key="frame" x="89" y="64" width="196" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PwPP" translatesAutoresizingMaskIntoConstraints="NO" id="h22-lQ-OlJ">
+                                <rect key="frame" x="29" y="210" width="316" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="rXe-bM-6ci"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="iJa-yQ-9zF" firstAttribute="firstBaseline" secondItem="h22-lQ-OlJ" secondAttribute="baseline" constant="127" id="COg-96-UTU"/>
+                            <constraint firstItem="iJa-yQ-9zF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="ENh-q5-8ah"/>
+                            <constraint firstItem="UqY-hn-2pC" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="196:667" id="OEL-HP-gCx"/>
+                            <constraint firstItem="iJa-yQ-9zF" firstAttribute="centerX" secondItem="h22-lQ-OlJ" secondAttribute="centerX" id="Wex-YW-ZW7"/>
+                            <constraint firstItem="UqY-hn-2pC" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-261.5" id="d7d-SQ-qLd"/>
+                            <constraint firstItem="UqY-hn-2pC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="o23-Th-CVj"/>
+                            <constraint firstItem="UqY-hn-2pC" firstAttribute="centerX" secondItem="h22-lQ-OlJ" secondAttribute="centerX" id="pAo-dP-8a9"/>
+                            <constraint firstItem="h22-lQ-OlJ" firstAttribute="top" secondItem="UqY-hn-2pC" secondAttribute="bottom" constant="110" id="pHX-Kk-HSs"/>
+                            <constraint firstItem="h22-lQ-OlJ" firstAttribute="trailing" secondItem="UqY-hn-2pC" secondAttribute="trailing" constant="60" id="pfs-iX-Vva"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="iJa-yQ-9zF" secondAttribute="bottom" constant="143" id="qWC-Qj-m49"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="pwCardsButton" destination="iJa-yQ-9zF" id="BF7-Wx-WVI"/>
+                        <outlet property="pwppButton" destination="h22-lQ-OlJ" id="tJr-by-Jnu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="118.29085457271366"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="PwPP" width="526" height="102"/>
+        <image name="cards" width="516" height="172"/>
+    </resources>
 </document>
