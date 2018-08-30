@@ -16,6 +16,13 @@
 		BE4D9F8A213539630031685F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE4D9F88213539630031685F /* LaunchScreen.storyboard */; };
 		BEB750B021355E33002DF51A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEB750AF21355E33002DF51A /* Images.xcassets */; };
 		BEC73F4C2135FD5A00530894 /* libPPRiskComponent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEC73F4B2135FD5A00530894 /* libPPRiskComponent.a */; };
+		BECC12A4213803470035F1BE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BECC12A3213803470035F1BE /* Security.framework */; };
+		BECC12A6213803500035F1BE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BECC12A5213803500035F1BE /* CoreGraphics.framework */; };
+		BECC12A82138035A0035F1BE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BECC12A72138035A0035F1BE /* SystemConfiguration.framework */; };
+		BECC12AA213803680035F1BE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BECC12A9213803680035F1BE /* CFNetwork.framework */; };
+		BECC12AC213803710035F1BE /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BECC12AB213803710035F1BE /* MessageUI.framework */; };
+		BECC12AE213803780035F1BE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BECC12AD213803780035F1BE /* CoreLocation.framework */; };
+		BECC12B0213803800035F1BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BECC12AF213803800035F1BE /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +41,13 @@
 		BE4D9F92213549700031685F /* PPRiskBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPRiskBridge.h; sourceTree = "<group>"; };
 		BEB750AF21355E33002DF51A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BEC73F4B2135FD5A00530894 /* libPPRiskComponent.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPPRiskComponent.a; sourceTree = "<group>"; };
+		BECC12A3213803470035F1BE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		BECC12A5213803500035F1BE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BECC12A72138035A0035F1BE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BECC12A9213803680035F1BE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		BECC12AB213803710035F1BE /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		BECC12AD213803780035F1BE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		BECC12AF213803800035F1BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +55,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BECC12B0213803800035F1BE /* Foundation.framework in Frameworks */,
+				BECC12AE213803780035F1BE /* CoreLocation.framework in Frameworks */,
+				BECC12AC213803710035F1BE /* MessageUI.framework in Frameworks */,
+				BECC12AA213803680035F1BE /* CFNetwork.framework in Frameworks */,
+				BECC12A82138035A0035F1BE /* SystemConfiguration.framework in Frameworks */,
+				BECC12A6213803500035F1BE /* CoreGraphics.framework in Frameworks */,
+				BECC12A4213803470035F1BE /* Security.framework in Frameworks */,
 				BEC73F4C2135FD5A00530894 /* libPPRiskComponent.a in Frameworks */,
 				090461C73F9F75874028C41D /* Pods_SPBinApp.framework in Frameworks */,
 			);
@@ -96,6 +117,13 @@
 		DE0775F348E5A12B567ADF91 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BECC12AF213803800035F1BE /* Foundation.framework */,
+				BECC12AD213803780035F1BE /* CoreLocation.framework */,
+				BECC12AB213803710035F1BE /* MessageUI.framework */,
+				BECC12A9213803680035F1BE /* CFNetwork.framework */,
+				BECC12A72138035A0035F1BE /* SystemConfiguration.framework */,
+				BECC12A5213803500035F1BE /* CoreGraphics.framework */,
+				BECC12A3213803470035F1BE /* Security.framework */,
 				BEC73F4B2135FD5A00530894 /* libPPRiskComponent.a */,
 				6EC064F67FCA36B76C3B340F /* Pods_SPBinApp.framework */,
 			);

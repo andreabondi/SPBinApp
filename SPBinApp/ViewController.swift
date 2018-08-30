@@ -21,6 +21,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
 
     let customUrl = "uk.co.paypal.spbinapp"
     let host = "https://ppxoab.herokuapp.com"
+    let appVersion = "0.1"
 
     @IBOutlet weak var pwppButton: UIImageView!
     @IBOutlet weak var pwCardsButton: UIImageView!
@@ -31,11 +32,12 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
     var riskComponent: PPRiskComponent? = nil
     var spinnerControl: UIView? = nil
     var safariVC: SFSafariViewController? = nil
+    var token: String! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // These two lines enable the debug mode for Magnes risk library
+        // These two lines enable the debug mode for Magnes risk library, comment before production
         let defaults = UserDefaults.standard
         defaults.set(true, forKey: "dyson.debug.mode")
         
@@ -65,6 +67,39 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
         getToken(type: Payment.cards)
     }
     
+    // Call your servers to retrieve an EC token
+    
+    func getToken(type: Payment) {
+        let size = CGSize(width: 30, height: 30)
+        startAnimating(size, message: "Retrieving EC token...", type: NVActivityIndicatorType(rawValue: 16)!, fadeInAnimation: nil)
+        
+        Alamofire.request(host + "/tokenPwPP", method: .post).responseJSON{response in
+            if let result = response.result.value{
+                let json = JSON(result)
+                self.token = json["TOKEN"].string!
+                print(self.token)
+                _ = self.sendSecurityPayload(token: self.token)
+                self.stopAnimating()
+                if(type == Payment.paypal){
+                    self.startCheckoutForPwpp(token: self.token)
+                } else {
+                    self.startCheckoutForCards(token: self.token)
+                }
+            }
+        }
+    }
+    
+    func sendSecurityPayload(token: String) -> String{
+        var resultingPairingId = token
+        let additionalParams: Dictionary = [kRiskManagerPairingId: token]
+        if(self.riskComponent == nil){
+            self.riskComponent = PPRiskComponent.initWith(PPRiskSourceAppUnknown, withSourceAppVersion: appVersion, withAdditionalParams: additionalParams)
+        } else {
+            resultingPairingId = PPRiskComponent.shared().generatePairingId(token)
+        }
+        return resultingPairingId
+    }
+
     func startCheckoutForPwpp(token: String){
         let checkoutString = "https://www.sandbox.paypal.com/checkoutnow?useraction=commit&token=" + token
         let url = URL(string: checkoutString)
@@ -93,37 +128,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
             safariVC!.delegate = self
         }
     }
-
-    func getToken(type: Payment) {
-        let size = CGSize(width: 30, height: 30)
-        startAnimating(size, message: "Retrieving EC token...", type: NVActivityIndicatorType(rawValue: 16)!, fadeInAnimation: nil)
-        
-        Alamofire.request(host + "/tokenPwPP", method: .post).responseJSON{response in
-            if let result = response.result.value{
-                let json = JSON(result)
-                let token = json["TOKEN"].string!
-                print(token)
-                let payload = self.sendSecurityPayload(token: token)
-                print(payload)
-                self.stopAnimating()
-                if(type == Payment.paypal){
-                    self.startCheckoutForPwpp(token: token)
-                } else {
-                    self.startCheckoutForCards(token: token)
-                }
-            }
-        }
-    }
     
-    func sendSecurityPayload(token: String) -> String{
-        var resultingPairingId = token
-        if(self.riskComponent == nil){
-            self.riskComponent = PPRiskComponent.initWith(PPRiskSourceAppUnknown, withSourceAppVersion: "0.1", withAdditionalParams: nil)
-        } else {
-            resultingPairingId = PPRiskComponent.shared().generatePairingId(token)
-        }
-        return resultingPairingId
-    }
     
     func startCheckoutForCards(token: String){
         let checkoutString = "https://ppxoab.herokuapp.com/testSPBinApp.html?token=" + token
