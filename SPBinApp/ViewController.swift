@@ -194,8 +194,11 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
     // Just show an alert with the cancelled transaction token
     
     func cancelTransaction(token: String){
-        let alertController = UIAlertController(title: "Transaction cancelled!", message:
-            "Transaction cancelled by user.\nToken: " + token, preferredStyle: UIAlertControllerStyle.alert)
+        let message = "Transaction cancelled by user.\nToken: \(token)"
+        let alertController = UIAlertController(title: "Transaction cancelled!", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Copy & Dismiss", style: UIAlertActionStyle.default,handler: { (self) in
+            UIPasteboard.general.string = message
+        }))
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
         
         self.present(alertController, animated: true, completion: nil)
@@ -213,14 +216,19 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
                 print(result)
                 let json = JSON(result)
                 if (json["ACK"].string == "Success" && json["PAYMENTINFO_0_PAYMENTSTATUS"] == "Completed"){
-                    let alertController = UIAlertController(title: "Payment completed!", message:
-                        "Token: \(json["TOKEN"].string!)\nTransaction ID: \(json["PAYMENTINFO_0_TRANSACTIONID"].string!)\nCorrelation ID: \(json["CORRELATIONID"].string!)", preferredStyle: UIAlertControllerStyle.alert)
+                    let message = "Token: \(json["TOKEN"].string!)\nTransaction ID: \(json["PAYMENTINFO_0_TRANSACTIONID"].string!)\nCorrelation ID: \(json["CORRELATIONID"].string!)"
+                    let alertController = UIAlertController(title: "Payment completed!", message: message, preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "Copy & Dismiss", style: UIAlertActionStyle.default,handler: { (self) in
+                        UIPasteboard.general.string = message
+                    }))
                     alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-                    
                     self.present(alertController, animated: true, completion: nil)
                 } else if (json["ACK"].string == "Failure"){
-                    let alertController = UIAlertController(title: "Transaction failed!", message:
-                        "Token: " + json["TOKEN"].string! + "\nError code: \(json["L_ERRORCODE0"].string!)\nCorrelation ID: \(json["CORRELATIONID"].string!)", preferredStyle: UIAlertControllerStyle.alert)
+                    let message = "Token: \(json["TOKEN"].string!)\nError code: \(json["L_ERRORCODE0"].string!)\nCorrelation ID: \(json["CORRELATIONID"].string!)"
+                    let alertController = UIAlertController(title: "Transaction failed!", message: message, preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "Copy & Dismiss", style: UIAlertActionStyle.default,handler: { (self) in
+                        UIPasteboard.general.string = message
+                    }))
                     alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
                     self.present(alertController, animated: true, completion: nil)
                 }
