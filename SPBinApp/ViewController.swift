@@ -12,11 +12,6 @@ import SwiftyJSON
 import SafariServices
 import NVActivityIndicatorView
 
-enum Payment {
-    case paypal
-    case cards
-}
-
 class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivityIndicatorViewable {
 
     let customUrl = "uk.co.paypal.spbinapp"
@@ -67,7 +62,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
         getToken(type: Payment.cards)
     }
     
-    // Call your servers to retrieve an EC token
+    // Call your servers to retrieve an EC token. Here you can pass to your server also any additional details for the transaction e.g. the amount
     
     func getToken(type: Payment) {
         let size = CGSize(width: 30, height: 30)
@@ -89,6 +84,8 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
         }
     }
     
+    // Upload Magnes risk payload using the EC token as pairing id
+    
     func sendSecurityPayload(token: String) -> String{
         var resultingPairingId = token
         let additionalParams: Dictionary = [kRiskManagerPairingId: token]
@@ -99,6 +96,13 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
         }
         return resultingPairingId
     }
+
+    /*
+     Open the PayPal redirect. For iOS 9,10 use SFSafariViewController, while for iOS 11 use SFAuthenticationSession.
+     iOS 12 will deprecate SFAuthenticationSession replacing it with ASWebAuthenticationSession which will provide similar functionalities and APIs.
+     After confirmation, PayPal will return to RETURN_URL (or CANCEL_URL) that will map to the Custom URL of the mobile app.
+     For SFSafariViewController this return is handled from the main AppDelegate open(url) function, otherwise the behaviour is specified in the completionHandler
+    */
 
     func startCheckoutForPwpp(token: String){
         let checkoutString = "https://www.sandbox.paypal.com/checkoutnow?useraction=commit&token=" + token
@@ -129,6 +133,12 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
         }
     }
     
+    /*
+     Open the page to load SmartPaymentButton component. The page should be opened inside a SFSafariViewController for iOS > 11,]
+     while for previous iOS versions should use a WKWebView. The reason is that checkout.js relies on opening new tabs, which isn't supported
+     in older versions of SFSafariViewController.
+     The return flow will be handled similarly to the normal PayPal flow, using the Custom URL
+    */
     
     func startCheckoutForCards(token: String){
         let checkoutString = "https://ppxoab.herokuapp.com/testSPBinApp.html?token=" + token
@@ -151,10 +161,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
         }
     }
     
-    func safariViewControllerDidFinish(_ controller: SFSafariViewController)
-    {
-        controller.dismiss(animated: true, completion: nil)
-    }
+    // Dismiss the current view and execute the payment. Called using Notification Center
     
     @objc func executeFromSVC(notification: NSNotification) {
         if #available(iOS 11, *) {
@@ -165,6 +172,8 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
         executePayment(token: notification.userInfo?["token"] as! String, payerID: notification.userInfo?["payerID"] as! String)
     }
 
+    // Dismiss the current view and cancel the flow. Called using Notification Center
+    
     @objc func cancelTransactionFromSVC(notification: NSNotification) {
         if #available(iOS 11, *) {
             self.dismiss(animated: true, completion: nil)
@@ -175,6 +184,8 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
         cancelTransaction(token: token)
     }
     
+    // Just show an alert with the cancelled transaction token
+    
     func cancelTransaction(token: String){
         let alertController = UIAlertController(title: "Transaction cancelled!", message:
             "Transaction cancelled by user.\nToken: " + token, preferredStyle: UIAlertControllerStyle.alert)
@@ -182,6 +193,8 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
         
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    // Call the server-side API to execute the transaction, sending the required parameters to your backend servers
     
     func executePayment(token: String, payerID: String){
         let size = CGSize(width: 30, height: 30)
@@ -208,9 +221,9 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
             }
         }
     }
-}
-
-func getQueryStringParameter(url: String, param: String) -> String? {
-    guard let url = URLComponents(string: url) else { return nil }
-    return url.queryItems?.first(where: { $0.name == param })?.value
+    
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController)
+    {
+        controller.dismiss(animated: true, completion: nil)
+    }
 }

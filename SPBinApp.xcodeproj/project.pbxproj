@@ -23,6 +23,7 @@
 		BECC12AC213803710035F1BE /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BECC12AB213803710035F1BE /* MessageUI.framework */; };
 		BECC12AE213803780035F1BE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BECC12AD213803780035F1BE /* CoreLocation.framework */; };
 		BECC12B0213803800035F1BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BECC12AF213803800035F1BE /* Foundation.framework */; };
+		BECC12B2213820920035F1BE /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECC12B1213820920035F1BE /* utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		BECC12AB213803710035F1BE /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		BECC12AD213803780035F1BE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		BECC12AF213803800035F1BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BECC12B1213820920035F1BE /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				BE4D9F8B213539630031685F /* Info.plist */,
 				BEB750AF21355E33002DF51A /* Images.xcassets */,
 				BE438E412136C52300C44611 /* SPBWkWebViewController.swift */,
+				BECC12B1213820920035F1BE /* utils.swift */,
 			);
 			path = SPBinApp;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				BE4D9F82213539620031685F /* ViewController.swift in Sources */,
 				BE4D9F80213539620031685F /* AppDelegate.swift in Sources */,
 				BE438E422136C52300C44611 /* SPBWkWebViewController.swift in Sources */,
+				BECC12B2213820920035F1BE /* utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

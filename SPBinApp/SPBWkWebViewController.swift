@@ -37,6 +37,12 @@ class SPBWkWebViewController: UIViewController, WKNavigationDelegate {
         self.url = url
     }
     
+    /*
+     When confirming or canceling the transaction, PayPal Smart Payment Button will redirect to our Custom URL.
+     This handler function will detect that the WebView is trying to load the Custom URL and will call the appropriate notification
+     to complete or cancel the transaction
+    */
+    
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         var action: WKNavigationActionPolicy?
         
@@ -45,8 +51,6 @@ class SPBWkWebViewController: UIViewController, WKNavigationDelegate {
         }
         
         guard let url = navigationAction.request.url else { return }
-        
-        print(url)
         
         if (url.scheme == "uk.co.paypal.spbinapp"){
             if(url.host == "success"){

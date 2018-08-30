@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // Handle return from SFSafariViewController
+    
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         if(url.scheme == "uk.co.paypal.spbinapp"){
             if(url.host == "success"){
@@ -64,9 +65,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
-}
-
-extension Notification.Name {
-    static let complete = Notification.Name("complete")
-    static let cancel = Notification.Name("cancel")
 }

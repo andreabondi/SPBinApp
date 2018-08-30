@@ -27,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="-1626" y="201"/>
         </scene>
-        <!--The FA mobile app-->
+        <!--Your mobile app-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SPBinApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -68,7 +68,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="The FA mobile app" id="zYI-RH-SMx"/>
+                    <navigationItem key="navigationItem" title="Your mobile app" id="zYI-RH-SMx"/>
                     <connections>
                         <outlet property="pwCardsButton" destination="iJa-yQ-9zF" id="BF7-Wx-WVI"/>
                         <outlet property="pwppButton" destination="h22-lQ-OlJ" id="tJr-by-Jnu"/>
