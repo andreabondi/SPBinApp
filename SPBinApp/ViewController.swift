@@ -28,6 +28,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
     var spinnerControl: UIView? = nil
     var safariVC: SFSafariViewController? = nil
     var token: String! = nil
+    var checkoutFlow: Payment? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +76,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
                 print(self.token)
                 _ = self.sendSecurityPayload(token: self.token)
                 self.stopAnimating()
+                self.checkoutFlow = type
                 if(type == Payment.paypal){
                     self.startCheckoutForPwpp(token: self.token)
                 } else {
@@ -167,7 +169,12 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
         if #available(iOS 11, *) {
             self.dismiss(animated: true, completion: nil)
         } else {
-            navigationController?.popViewController(animated: true)
+            // PayPal flow will load on a SFSafariViewController, so dismiss
+            if(checkoutFlow == Payment.paypal){
+                self.dismiss(animated: true, completion: nil)
+            }else if checkoutFlow == Payment.cards{
+                navigationController?.popViewController(animated: true)
+            }
         }
         executePayment(token: notification.userInfo?["token"] as! String, payerID: notification.userInfo?["payerID"] as! String)
     }
@@ -207,13 +214,13 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
                 let json = JSON(result)
                 if (json["ACK"].string == "Success" && json["PAYMENTINFO_0_PAYMENTSTATUS"] == "Completed"){
                     let alertController = UIAlertController(title: "Payment completed!", message:
-                        "Token: " + json["TOKEN"].string!, preferredStyle: UIAlertControllerStyle.alert)
+                        "Token: \(json["TOKEN"].string!)\nTransaction ID: \(json["PAYMENTINFO_0_TRANSACTIONID"].string!)\nCorrelation ID: \(json["CORRELATIONID"].string!)", preferredStyle: UIAlertControllerStyle.alert)
                     alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
                     
                     self.present(alertController, animated: true, completion: nil)
                 } else if (json["ACK"].string == "Failure"){
                     let alertController = UIAlertController(title: "Transaction failed!", message:
-                        "Token: " + json["TOKEN"].string! + "\nError code " + json["L_ERRORCODE0"].string!, preferredStyle: UIAlertControllerStyle.alert)
+                        "Token: " + json["TOKEN"].string! + "\nError code: \(json["L_ERRORCODE0"].string!)\nCorrelation ID: \(json["CORRELATIONID"].string!)", preferredStyle: UIAlertControllerStyle.alert)
                     alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
                     self.present(alertController, animated: true, completion: nil)
                 }
