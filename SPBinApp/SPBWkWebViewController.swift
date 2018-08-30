@@ -13,42 +13,22 @@ import WebKit
 class SPBWkWebViewController: UIViewController, WKNavigationDelegate {
     var url: URL? = nil
     
+    @IBOutlet weak var checkoutWebView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let navigationBar = UINavigationBar()
-        navigationBar.barTintColor = UIColor.lightGray
-        navigationBar.isTranslucent = false
-//        navigationBar.delegate = self
-        navigationBar.backgroundColor = .white
-
-
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: nil)
-
-        let navigationItem = UINavigationItem(title: "Checkout with cards")
-        navigationItem.rightBarButtonItem = cancelButton
-
-        navigationBar.items = [navigationItem]
-        
-        view.addSubview(navigationBar)
-
-        navigationBar.translatesAutoresizingMaskIntoConstraints = false
-        navigationBar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        navigationBar.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        
-        if #available(iOS 11, *) {
-            navigationBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        } else {
-            navigationBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
-        }
-        
-        let screenSize: CGRect = UIScreen.main.bounds
-        let webView = WKWebView(frame: CGRect(x: 0, y: 72, width: screenSize.width, height: screenSize.height-72))
+        let webView = WKWebView(frame: .zero)
 
         let request = URLRequest(url: url!)
         webView.navigationDelegate = self
 
-        view.addSubview(webView)
+        checkoutWebView.addSubview(webView)
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        let height = NSLayoutConstraint(item: webView, attribute: .height, relatedBy: .equal, toItem: checkoutWebView, attribute: .height, multiplier: 1, constant: 0)
+        let width = NSLayoutConstraint(item: webView, attribute: .width, relatedBy: .equal, toItem: checkoutWebView, attribute: .width, multiplier: 1, constant: 0)
+        view.addConstraints([height, width])
+        
         webView.load(request)
 
     }

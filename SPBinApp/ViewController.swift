@@ -18,15 +18,15 @@ enum Payment {
 }
 
 class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivityIndicatorViewable {
-    
+
     let customUrl = "uk.co.paypal.spbinapp"
-//    let host = "http://localhost:3000"
     let host = "https://ppxoab.herokuapp.com"
-    
+
     @IBOutlet weak var pwppButton: UIImageView!
     @IBOutlet weak var pwCardsButton: UIImageView!
     
     var authSession: NSObject? = nil
+    var url : URL? = nil
 
     var riskComponent: PPRiskComponent? = nil
     var spinnerControl: UIView? = nil
@@ -72,6 +72,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
             authSession = SFAuthenticationSession(url: url!, callbackURLScheme: customUrl, completionHandler: { (callback: URL?, error: Error?) in
                 guard error == nil, let successURL = callback else {
                     print(error!)
+                    self.cancelTransaction(token: token)
                     return
                 }
                 print(successURL)
@@ -126,7 +127,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
     
     func startCheckoutForCards(token: String){
         let checkoutString = "https://ppxoab.herokuapp.com/testSPBinApp.html?token=" + token
-        let url = URL(string: checkoutString)
+        url = URL(string: checkoutString)
         
         // Pre-iOS 11 SVC don't support opening new tabs
         if #available(iOS 11, *) {
@@ -134,9 +135,14 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
             self.present(safariVC, animated: true, completion: nil)
             safariVC.delegate = self
         } else {
-            let spbWebView = SPBWkWebViewController()
-            spbWebView.loadUrl(url: url!)
-            self.present(spbWebView, animated: true, completion: nil)
+            performSegue(withIdentifier: "ShowWkWebView", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowWkWebView" {
+            let destination = segue.destination as! SPBWkWebViewController
+            destination.loadUrl(url: url!)
         }
     }
     
@@ -149,7 +155,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
         if #available(iOS 11, *) {
             self.dismiss(animated: true, completion: nil)
         } else {
-            dismiss(animated: true, completion: nil)
+            navigationController?.popViewController(animated: true)
         }
         executePayment(token: notification.userInfo?["token"] as! String, payerID: notification.userInfo?["payerID"] as! String)
     }
@@ -158,7 +164,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate, NVActivi
         if #available(iOS 11, *) {
             self.dismiss(animated: true, completion: nil)
         } else {
-            dismiss(animated: true, completion: nil)
+            navigationController?.popViewController(animated: true)
         }
         let token = notification.userInfo?["token"] as! String
         cancelTransaction(token: token)
